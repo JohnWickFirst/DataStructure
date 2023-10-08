@@ -17,6 +17,10 @@ public class SinglyLinkedList {
             this.data=data;
             this.next=null;
         }
+
+        Node(){
+            this.next=null;
+        }
     }
 
     // To initialize Singly Linked List
@@ -27,6 +31,7 @@ public class SinglyLinkedList {
     }
 
     // To add element in singly Linked List
+    // This Method is Tested
     public void add(int data)  {
 
             Node cur=head;
@@ -154,6 +159,94 @@ public class SinglyLinkedList {
             cur=fast;
         }
         this.head=prev;
+    }
+//Check if ist in palindrome
+    //Tested
+
+    public boolean isPalindrome(){
+        Node temp=head;
+        String num="";
+        while(temp!=null){
+            num=num+""+temp.data;
+            temp=temp.next;
+        }
+        int len=num.length();
+        int i=0, j=len-1;
+        while(i<=j){
+            if(num.charAt(i)!=num.charAt(j)){
+                return false;
+            }
+            i++;j--;
+        }
+        return true;
+    }
+
+
+// Detect Loop in the linked List
+    public boolean isLoopPresent(){
+        Node temp=head;
+        Node current=head;
+        while(temp!=null && temp.next!=null)
+        {
+            temp=temp.next.next;
+            current=current.next;
+            if(temp==current)
+                return true;
+
+        }
+        return false;
+    }
+
+//  removeLoopFrom    the list
+
+    public void removeLoopFromList(){
+        Node dummy = new Node();
+        dummy.next = head;
+        Node fast = dummy;
+        Node slow = dummy;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) break;
+        }
+
+        if(slow != fast) return;
+
+        Node tempHead = dummy;
+
+        while(tempHead.next != slow.next) {
+            tempHead = tempHead.next;
+            slow = slow.next;
+        }
+
+        slow.next = null;
+        head = dummy.next;
+    }
+
+
+    // Remove Duplicates from the Sorted Linked List
+
+    public void removeDuplicates(){
+        // Your code here
+        if(head==null || head.next==null)
+            return ;
+
+        Node temp=head;
+        while(temp!=null && temp.next!=null)
+        {
+            if(temp.data==temp.next.data)
+            {
+                //        System.out.print(temp.data+"inside temp "+temp.next.data);
+                temp.next=temp.next.next;
+
+            }
+            else
+                temp=temp.next;
+
+        }
+
+        return ;
     }
 
 
