@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.LinkedList;
+
 public class SinglyLinkedList {
     // Singly Linked List Class
     Node head;
@@ -74,7 +76,7 @@ public class SinglyLinkedList {
         }else{
             insertAtPos(num,pos);
         }
-
+        count++;
 
     }
     private void insertAtPos(int num, int pos){
@@ -130,6 +132,30 @@ public class SinglyLinkedList {
         }
         return slow.data;
     }
+
+    public int getCount(){
+        return this.count;
+    }
+
+    // Reverse a linked list
+    public void reverseLinkedList(){
+//        if(count==1 || head==null){
+//            return ;
+//        }
+
+        Node cur=head;
+        Node prev=null;
+        Node fast=head;
+
+        while(fast!=null){
+            fast=fast.next;
+            cur.next=prev;
+            prev=cur;
+            cur=fast;
+        }
+        this.head=prev;
+    }
+
 
 
 }

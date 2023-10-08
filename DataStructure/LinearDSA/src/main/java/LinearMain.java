@@ -1,26 +1,34 @@
 import LinkedList.SinglyLinkedList;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 public class LinearMain{
 
     public static void main(String[] args){
 
-        System.out.println("Linear Dsa and Git learning from scratch");
-
         SinglyLinkedList sl=new SinglyLinkedList(10);
-        sl.add(12);
-        sl.add(15);
-        sl.add(20);
 
-
-
-        System.out.println("After updating the list \n");
         sl.insert(23,0);
         sl.insert(50,0);
-        sl.insert(50,10);
-        sl.insert(100,3);
-        sl.insert(120,12);
-        sl.print();
-        System.out.println(sl.NNodeFromEnd(5)+" "+sl.findMiddleTerm());
+        sl.insert(9,4);
+        sl.insert(7,5);
 
+        sl.print();
+        System.out.println(" \n");
+        sl.reverseLinkedList();
+        System.out.println(" \n Ram Jai Jai Ram   "+sl.getCount() );
+        sl.print();
+        List<String> halfString=new ArrayList<String>();
+        List<String> ans=new ArrayList<String>();
+       String middle="";
+        HashSet<String> hs=new HashSet<String>();
+        hs.add("test");
+     //   hs.
+
+        for(int i=0;i<halfString.size();i++){
+            ans.add(halfString.get(i)+middle+halfString.get(i));
+        }
     }
 }

@@ -1,2 +1,4 @@
-package Stack;public class Stack {
+package Stack;
+
+public class Stack {
 }
