@@ -1,30 +1,30 @@
 import LinkedList.SinglyLinkedList;
-import Stack.DynamicStack;
+import Queue.DynamicQueue;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Stack;
+import Queue.Queue;
 
 public class LinearMain{
 
     public static void main(String[] args){
 
-        DynamicStack ds= new DynamicStack();
+        Queue ds= new DynamicQueue();
         System.out.println(ds.isEmpty()+"  "+ds.size());
         for(int i=0;i<10;i++){
-            ds.push(i);
+            ds.offer(i);
         }
         ds.print();
-        System.out.println(ds.pop()+" Popped \n");
+        System.out.println(ds.poll()+" Popped \n");
         System.out.println(ds.isEmpty()+"  "+ds.size());
         System.out.println(ds.peek()+" Peek\n");
 
-        System.out.println("Search: "+ds.search(12)+" "+ds.search(5));
-        System.out.println("Index: "+ds.getIndex(5)+" "+ds.getIndex(0)+" "+ds.getIndex(12));
+        System.out.println("Search: "+ds.contains(12)+" "+ds.contains(5));
+        System.out.println("Index: "+ds.search(5)+" "+ds.search(0)+" "+ds.search(12));
 
+        ds.offer(14);
 
         ds.print();
+
+
 
 
 
