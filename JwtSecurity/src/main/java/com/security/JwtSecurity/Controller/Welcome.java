@@ -1,5 +1,4 @@
 package com.security.JwtSecurity.Controller;
-
 import com.security.JwtSecurity.Utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +12,7 @@ public class Welcome {
     @Autowired
     private JwtUtils jwtUtil;
 
+
     @GetMapping("/invalid")
     public String welcome() {
         return "Welcome to javatechie !!";
@@ -22,4 +22,5 @@ public class Welcome {
     public String isValidated(){
         return "Good validation works";
     }
+
 }

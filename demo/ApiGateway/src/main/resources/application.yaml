@@ -1,5 +1,5 @@
 server:
-  port: 5050
+  port: 8082
 eureka:
   instances:
     prefer-ip-address: true
@@ -11,5 +11,19 @@ eureka:
 
 spring:
   application:
-    name: Api-Gateway
+    name: ApiGateway
+  cloud:
+    gateway:
+      routes:
+        - id: BACKENDDB
+          uri: lb://BACKENDDB
+          predicates:
+            - Path=/info/** , /tweet/** , /payment/**
+          filters:
+            - AuthFilter
+
+        - id: SECURITY
+          uri: lb://SECURITY
+          predicates:
+            - Path=/identity/** , /register/**
 

@@ -1,5 +1,6 @@
 package com.security.JwtSecurity.Utils;
 
+
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -7,10 +8,22 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+
+
+import io.jsonwebtoken.security.Keys;
+
+
+import static com.security.JwtSecurity.Constant.SecurityConstant.JWT_KEY;
+
+@Service
+public class JwtUtils {
+    @Autowired
+    private UserRepo userRepo;
 
 import java.util.Map;
 
@@ -19,10 +32,12 @@ public class JwtUtils {
 
     private static final String secret="testJwt";
 
+
     public String extractUserName(String token){
 
         return null;
     }
+
 
     public String createToken(Map<String,Object> claim, String subject){
         return Jwts.builder().setClaims(claim).setSubject(subject).setIssuedAt(
@@ -33,6 +48,7 @@ public class JwtUtils {
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+
     }
 
     private boolean isTokenExpired(String token) {
@@ -51,7 +67,9 @@ public class JwtUtils {
         return claimsResolver.apply(claims);
     }
     private Claims extractAllClaims(String token) {
+
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+
     }
 
     public String extractUsername(String token) {
