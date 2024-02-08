@@ -19,14 +19,11 @@ public class CustomDetailUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User authUser= userRepo.getUser(username);
-       try {
-           if(authUser!=null){
-               return new org.springframework.security.core.userdetails.
-                       User(authUser.getUserName(), authUser.getPassword(), new ArrayList<>());
-           }
-       }catch (Exception e){
-           System.out.println("Data Conversion issue");
-       }
+
+        if(authUser!=null){
+          return new org.springframework.security.core.userdetails.
+                    User(authUser.getUserName(), authUser.getPassword(), new ArrayList<>());
+        }
         return null;
     }
 

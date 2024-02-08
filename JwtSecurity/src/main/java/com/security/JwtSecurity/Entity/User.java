@@ -2,6 +2,7 @@ package com.security.JwtSecurity.Entity;
 
 import jakarta.persistence.*;
 
+
 import java.time.LocalDate;
 
 @Entity
@@ -17,6 +18,16 @@ import java.time.LocalDate;
         )
 
 })
+
+@Entity
+@Table(name="Auth_Table")
+@NamedQueries(
+        @NamedQuery(
+                name="findUser",
+                query="select user from User user where user.userName = :userName"
+        )
+)
+
 public class User {
 
     @Id
@@ -35,6 +46,14 @@ public class User {
     private LocalDate date;
 
     public User() {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+
     }
 
     public String getUserName() {
@@ -53,6 +72,7 @@ public class User {
         this.password = password;
     }
 
+
     public LocalDate getDate() {
         return date;
     }
@@ -70,5 +90,13 @@ public class User {
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
+
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public User() {
+
     }
 }
